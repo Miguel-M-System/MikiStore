@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MikiStore | Tienda de tecnología</title>
+  <link rel="icon" href="img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <nav class="navbar barra" data-bs-theme="dark">
+    <div class="container">
+      <a class="navbar-brand fw-bold d-flex align-items-center gap-2" href="index.html">
+        <img src="img/logo.svg" alt="Logo de MikiStore" width="32" height="32">
+        🛍️ MikiStore
+      </a>
+      <div class="d-flex gap-2">
+        <button id="btnTema" class="btn btn-outline-light btn-sm" onclick="cambiarTema()">🌙</button>
+        <a href="admin.html" class="btn btn-outline-light btn-sm">Admin</a>
+      </div>
+    </div>
+  </nav>
+
+  <div id="carruselMiki" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#carruselMiki" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Diapositiva 1"></button>
+      <button type="button" data-bs-target="#carruselMiki" data-bs-slide-to="1" aria-label="Diapositiva 2"></button>
+      <button type="button" data-bs-target="#carruselMiki" data-bs-slide-to="2" aria-label="Diapositiva 3"></button>
+    </div>
+
+    <div class="carousel-inner">
+      <div class="carousel-item active" data-bs-interval="5000">
+        <img src="img/banner1.svg" class="d-block w-100" alt="Laptop y celular">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Lo último en tecnología</h2>
+          <p>Laptops, tablets y celulares para todos los días.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="img/banner2.svg" class="d-block w-100" alt="Audífonos, teclado y mouse">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Ofertas en audio y accesorios</h2>
+          <p>Audífonos, bocinas, teclados y más.</p>
+        </div>
+      </div>
+      <div class="carousel-item" data-bs-interval="5000">
+        <img src="img/banner3.svg" class="d-block w-100" alt="Control de videojuegos y libro">
+        <div class="carousel-caption">
+          <h2 class="fw-bold">Equípate para estudiar y jugar</h2>
+          <p>Todo lo que necesitas en un solo lugar.</p>
+        </div>
+      </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carruselMiki" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Anterior</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carruselMiki" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Siguiente</span>
+    </button>
+  </div>
+
+  <main class="container my-5">
+
+    <div class="row g-4 mb-5 text-center">
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-3">
+          <div class="fs-1">🚚</div>
+          <h5 class="mt-2">Envío rápido</h5>
+          <p class="text-body-secondary mb-0">Recibe tu pedido en 24 a 48 horas.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-3">
+          <div class="fs-1">🛡️</div>
+          <h5 class="mt-2">Garantía de 1 año</h5>
+          <p class="text-body-secondary mb-0">Todos nuestros productos tienen garantía.</p>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card h-100 border-0 shadow-sm p-3">
+          <div class="fs-1">🔒</div>
+          <h5 class="mt-2">Pago seguro</h5>
+          <p class="text-body-secondary mb-0">Tus datos siempre están protegidos.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-4">
+      <div class="col-lg-8">
+        <h2 class="mb-4">Nuestros productos</h2>
+        <div id="listaProductos" class="row row-cols-1 row-cols-sm-2 row-cols-xl-3 g-4">
+          <p class="text-body-secondary">Cargando productos...</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4">
+        <div class="card shadow-sm carrito sticky-lg-top">
+          <div class="card-header fw-bold">🛒 Carrito</div>
+          <ul id="listaCarrito" class="list-group list-group-flush"></ul>
+          <div class="card-footer">
+            <div class="d-flex justify-content-between fs-5 mb-2">
+              <span>Total:</span>
+              <strong id="totalCarrito">Bs 0.00</strong>
+            </div>
+            <button class="btn btn-primary w-100" onclick="comprar()">Comprar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="pie text-white text-center py-4">
+    <h5 class="mb-1">MikiStore</h5>
+    <p class="mb-1">Tu tienda de tecnología de confianza</p>
+    <small>&copy; <span id="anio"></span> MikiStore</small>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.9/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/tienda.js"></script>
+</body>
+</html>

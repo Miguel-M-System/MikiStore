@@ -1,0 +1,54 @@
+:root {
+  --bs-primary: #7c3aed;
+  --bs-primary-rgb: 124, 58, 237;
+}
+
+.btn-primary {
+  --bs-btn-bg: #7c3aed;
+  --bs-btn-border-color: #7c3aed;
+  --bs-btn-hover-bg: #6d28d9;
+  --bs-btn-hover-border-color: #6d28d9;
+  --bs-btn-active-bg: #5b21b6;
+  --bs-btn-active-border-color: #5b21b6;
+}
+
+body {
+  background-color: #f5f3ff;
+}
+
+[data-bs-theme="dark"] body {
+  background-color: #0f0a1e;
+}
+
+[data-bs-theme="dark"] .card {
+  --bs-card-bg: #1a1230;
+}
+
+.barra,
+.pie {
+  background-color: #1e0b3d;
+}
+
+.carousel-item img {
+  height: 350px;
+  object-fit: cover;
+}
+
+.producto-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(124, 58, 237, 0.3);
+}
+
+.producto-img {
+  height: 180px;
+  object-fit: contain;
+  background-color: #ffffff;
+}
+
+.carrito {
+  top: 1rem;
+}

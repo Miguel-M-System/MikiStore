@@ -92,6 +92,8 @@ function mostrarTabla() {
         <td>Bs ${Number(p.precio).toFixed(2)}</td>
         <td>${p.stock}</td>
         <td class="text-end text-nowrap">
+          <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#modalVer"
+                  onclick="verProducto('${p.id}')">Ver</button>
           <button class="btn btn-sm btn-warning" onclick="editarProducto('${p.id}')">Editar</button>
           <button class="btn btn-sm btn-danger" onclick="eliminarProducto('${p.id}')">Eliminar</button>
         </td>
@@ -139,6 +141,19 @@ async function guardarProducto() {
   } catch (error) {
     alert("No se pudo guardar el producto: " + error.message);
   }
+}
+
+function verProducto(id) {
+  const p = productos.find((producto) => producto.id === id);
+
+  $("verTitulo").textContent = p.nombre;
+  $("verContenido").innerHTML = `
+    <img src="${p.imagen}" class="w-100 rounded mb-3 info-img" alt="${p.nombre}">
+    <span class="badge text-bg-primary mb-2">${p.categoria}</span>
+    <p>${p.descripcion}</p>
+    <p class="fs-4 fw-bold mb-1">Bs ${Number(p.precio).toFixed(2)}</p>
+    <p class="mb-1">Stock: <strong>${p.stock <= 0 ? "Agotado" : p.stock + " unidades"}</strong></p>
+    <p class="small text-body-secondary mb-0">ID en MockAPI: ${p.id}</p>`;
 }
 
 function editarProducto(id) {

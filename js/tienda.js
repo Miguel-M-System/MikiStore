@@ -42,21 +42,47 @@ function mostrarProductos() {
     contenedor.innerHTML += `
       <div class="col">
         <div class="card h-100 producto-card">
-          <img src="${p.imagen}" class="card-img-top producto-img" alt="${p.nombre}">
+          <img src="${p.imagen}" class="card-img-top producto-img" alt="${p.nombre}"
+               data-bs-toggle="modal" data-bs-target="#modalInfo" onclick="verInfo('${p.id}')">
           <div class="card-body d-flex flex-column">
             <span class="badge text-bg-primary align-self-start mb-2">${p.categoria}</span>
             <h5 class="card-title">${p.nombre}</h5>
-            <p class="card-text small text-body-secondary">${p.descripcion}</p>
             <p class="fs-5 fw-bold mb-1">Bs ${Number(p.precio).toFixed(2)}</p>
             <p class="small mb-3">Stock: ${p.stock}</p>
-            <button class="btn ${agotado ? "btn-secondary" : "btn-primary"} mt-auto"
-                    onclick="agregarAlCarrito('${p.id}')" ${agotado ? "disabled" : ""}>
-              ${agotado ? "Agotado" : "Agregar al carrito"}
-            </button>
+            <div class="d-grid gap-2 mt-auto">
+              <button class="btn btn-outline-primary"
+                      data-bs-toggle="modal" data-bs-target="#modalInfo" onclick="verInfo('${p.id}')">
+                Ver info
+              </button>
+              <button class="btn ${agotado ? "btn-secondary" : "btn-primary"}"
+                      onclick="agregarAlCarrito('${p.id}')" ${agotado ? "disabled" : ""}>
+                ${agotado ? "Agotado" : "Agregar al carrito"}
+              </button>
+            </div>
           </div>
         </div>
       </div>`;
   });
+}
+
+function verInfo(id) {
+  const p = productos.find((producto) => producto.id === id);
+  const agotado = p.stock <= 0;
+
+  $("infoTitulo").textContent = p.nombre;
+  $("infoContenido").innerHTML = `
+    <img src="${p.imagen}" class="w-100 rounded mb-3 info-img" alt="${p.nombre}">
+    <span class="badge text-bg-primary mb-2">${p.categoria}</span>
+    <p>${p.descripcion}</p>
+    <p class="fs-4 fw-bold mb-1">Bs ${Number(p.precio).toFixed(2)}</p>
+    <p>Stock disponible: <strong>${agotado ? "Agotado" : p.stock + " unidades"}</strong></p>
+    <div class="d-flex gap-2">
+      <button class="btn btn-outline-secondary flex-fill" data-bs-dismiss="modal">Cerrar</button>
+      <button class="btn ${agotado ? "btn-secondary" : "btn-primary"} flex-fill" data-bs-dismiss="modal"
+              onclick="agregarAlCarrito('${p.id}')" ${agotado ? "disabled" : ""}>
+        ${agotado ? "Agotado" : "Agregar al carrito"}
+      </button>
+    </div>`;
 }
 
 function agregarAlCarrito(id) {
